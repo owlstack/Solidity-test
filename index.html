@@ -1,0 +1,29 @@
+<body style="font-size:200px">
+    ...
+    <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      web3js = new Web3(web3.currentProvider);
+      address="0xaf20716c60623736a903ca0ed5d933a4b99a4002" //ropsten
+      contractABI=[
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "favoriteNumber",
+		"outputs": [
+			{
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	}
+];
+      contract = web3js.eth.contract(contractABI).at(address);
+      contract.favoriteNumber(function(err, res){
+      document.body.innerHTML = res.toString();
+      });
+    });
+    </script>
+    </body>
